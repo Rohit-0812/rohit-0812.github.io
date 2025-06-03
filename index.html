@@ -1,55 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Resume</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Your Name</h1>
-        <p>Email: your.email@example.com</p>
-        <p>Phone: 98480 22334</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/your-profile" target="_blank">linkedin.com/in/your-profile</a></p>
-        <p>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
-    </header>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rohit's Homepage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/@popmotion/popmotion@9.3.5/dist/popmotion.global.min.js"></script>
+    <style>
+      body {
+        background: #0f172a;
+        color: white;
+        font-family: 'Segoe UI', sans-serif;
+      }
 
-    <section id="experience">
-        <h2>Experience</h2>
-        <ul>
-            <li>
-                <h3>Job Title - Company Name</h3>
-                <p>Dates: YYYY-MM to YYYY-MM</p>
-                <p>Description of your role, responsibilities, and achievements.</p>
-            </li>
-            <!-- Add more job entries -->
-        </ul>
+      .icon:hover {
+        transform: scale(1.2);
+      }
+
+      .cursor-follower {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #38bdf8;
+        border-radius: 50%;
+        pointer-events: none;
+        transition: transform 0.1s ease;
+        z-index: 9999;
+      }
+    </style>
+  </head>
+  <body class="relative">
+    <!-- Cursor follower -->
+    <div id="cursor" class="cursor-follower"></div>
+
+    <!-- Profile Image -->
+    <img
+      src="https://via.placeholder.com/100"
+      alt="Rohit"
+      class="w-24 h-24 rounded-full absolute top-4 right-4 border-2 border-cyan-400 shadow-lg"
+    />
+
+    <!-- Hero Section -->
+    <section class="h-screen flex flex-col justify-center items-center gap-4 text-center px-4">
+      <h1 class="text-4xl md:text-6xl font-bold text-cyan-400 animate-pulse">Hi, I'm Rohit</h1>
+      <p class="text-lg md:text-2xl text-slate-300">I build intelligent and beautiful systems.</p>
+
+      <!-- Icons -->
+      <div class="flex gap-6 mt-6 text-2xl">
+        <a href="#" class="icon transition-transform duration-200" title="GitHub">🐱</a>
+        <a href="#" class="icon transition-transform duration-200" title="LinkedIn">🔗</a>
+        <a href="#" class="icon transition-transform duration-200" title="Twitter">🐦</a>
+      </div>
     </section>
 
-    <section id="education">
-        <h2>Education</h2>
-        <ul>
-            <li>
-                <h3>Degree - University Name</h3>
-                <p>Graduation Date: YYYY</p>
-                <p>Additional details (e.g., thesis, honors, etc.)</p>
-            </li>
-            <!-- Add more education entries -->
-        </ul>
+    <!-- About Section -->
+    <section id="about" class="h-screen flex flex-col justify-center items-center bg-slate-800">
+      <h2 class="text-3xl text-cyan-300 mb-4">About Me</h2>
+      <p class="max-w-xl text-center text-slate-200">
+        I'm passionate about AI, systems, and building stuff that scales. I love working on tech that blends art and engineering.
+      </p>
     </section>
 
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>Skill 1</li>
-            <li>Skill 2</li>
-            <!-- Add more skills -->
-        </ul>
-    </section>
+    <!-- Script for Cursor Tracking -->
+    <script>
+      const cursor = document.getElementById("cursor");
 
-    <footer>
-        <p>Last updated: YYYY-MM-DD</p>
-    </footer>
-</body>
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      });
+
+      const icons = document.querySelectorAll(".icon");
+      icons.forEach((icon) => {
+        icon.addEventListener("mouseover", () => {
+          cursor.style.transform += " scale(1.5)";
+        });
+        icon.addEventListener("mouseleave", () => {
+          cursor.style.transform = `translate(${event.clientX}px, ${event.clientY}px) scale(1)`;
+        });
+      });
+    </script>
+  </body>
 </html>
